@@ -1,0 +1,78 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Admin Analytics & Store Overview</h2>
+
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card bg-success text-white p-3 shadow-sm">
+            <h5>Total Revenue</h5>
+            <h3>${{ total_revenue }}</h3>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-primary text-white p-3 shadow-sm">
+            <h5>Total Orders</h5>
+            <h3>{{ total_orders }}</h3>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-info text-white p-3 shadow-sm">
+            <h5>Paid Orders</h5>
+            <h3>{{ completed_orders }}</h3>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card border-warning mb-4 shadow-sm">
+            <div class="card-header bg-warning text-dark fw-bold">⚠ Low Stock Alerts (&lt; 10 items)</div>
+            <ul class="list-group list-group-flush">
+                {% for prod in low_stock_products %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ prod.name }}
+                        <span class="badge bg-danger rounded-pill">{{ prod.stock }} left</span>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item text-muted">All inventory stock levels look healthy!</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white fw-bold">Recent Orders</div>
+            <div class="card-body p-0">
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Amount</th>
+                            <th>Paid</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in recent_orders %}
+                        <tr>
+                            <td>#{{ order.id }}</td>
+                            <td>{{ order.full_name }}</td>
+                            <td>${{ order.total_amount }}</td>
+                            <td>
+                                {% if order.is_paid %}
+                                    <span class="badge bg-success">Yes</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">No</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
