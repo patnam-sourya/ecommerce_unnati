@@ -1,13 +1,13 @@
 Here is a complete, polished `README.md` structured specifically for your repository and project requirements:
 
-```markdown
+
 # Deep Store — Modern E-Commerce Platform
 
 A full-stack, responsive e-commerce web application built using **Django** and styled with modern CSS/Bootstrap. Features full product catalog browsing, search & categorization, cart management, user reviews, wishlist functionality, an administrative analytics dashboard, and **Razorpay** payment gateway integration.
 
 🌐 **Live Demo:** [https://ecommerce-unnati.onrender.com/](https://ecommerce-unnati.onrender.com/)
 
----
+
 
 ## ✨ Features
 
@@ -18,7 +18,7 @@ A full-stack, responsive e-commerce web application built using **Django** and s
 - **Admin Analytics Dashboard:** Custom business portal highlighting revenue metrics, order totals, low-stock warnings, and recent activity.
 - **Production-Ready Deployment:** Hosted on Render with WhiteNoise static collection and media routing.
 
----
+
 
 ## 🛠️ Tech Stack
 
@@ -29,7 +29,7 @@ A full-stack, responsive e-commerce web application built using **Django** and s
 - **Payment Processing:** Razorpay API Client
 - **Hosting / PaaS:** Render
 
----
+
 
 ## 📁 Project Structure
 
@@ -51,7 +51,7 @@ ecommerce_unnati/
 
 ```
 
----
+
 
 ## 🚀 Local Development Setup
 
