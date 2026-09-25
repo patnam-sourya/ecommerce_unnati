@@ -16,7 +16,7 @@
         "name": "Deep Store",
         "description": "Order Payment #{{ order.id }}",
         "order_id": "{{ razorpay_order_id }}",
-        "callback_url": "http://127.0.0.1:8000/payment-success/",
+        "callback_url": window.location.origin + "{% url 'payment_success' %}",
         "redirect": true,
         "theme": {
             "color": "#0d6efd"
