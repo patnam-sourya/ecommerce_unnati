@@ -11,12 +11,22 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6so*8g&x5uk3t@efv8gh^q+oo!99od4pd5njwbd6%nut0!g76o'
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY',
+    'django-insecure-6so*8g&x5uk3t@efv8gh^q+oo!99od4pd5njwbd6%nut0!g76o'
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Defaults to False in production unless DEBUG=True is explicitly set
+DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')
 
-ALLOWED_HOSTS = ['ecommerce-unnati.onrender.com', '.onrender.com', '127.0.0.1', 'localhost', '*']
+ALLOWED_HOSTS = [
+    'ecommerce-unnati.onrender.com',
+    '.onrender.com',
+    '127.0.0.1',
+    'localhost',
+    '*',
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -106,6 +116,6 @@ STORAGES = {
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Razorpay Test Credentials
-RAZORPAY_KEY_ID = 'rzp_test_TIw52LlDWQfzBS'
-RAZORPAY_KEY_SECRET = 'lOrrn5Nby5VlrYXCHZ8PdJAy'
+# Razorpay Credentials
+RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID', 'rzp_test_TIw52LlDWQfzBS')
+RAZORPAY_KEY_SECRET = os.environ.get('RAZORPAY_KEY_SECRET', 'lOrrn5Nby5VlrYXCHZ8PdJAy')
