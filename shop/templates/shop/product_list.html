@@ -31,7 +31,7 @@
             {% endif %}
             <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
-                <p class="card-text text-muted">${{ product.price }}</p>
+                <p class="card-text text-muted">₹{{ product.price }}</p>
                 <a href="{% url 'product_detail' product.slug %}" class="btn btn-outline-secondary btn-sm">Details</a>
                 <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary btn-sm float-end">Add to Cart</a>
             </div>
